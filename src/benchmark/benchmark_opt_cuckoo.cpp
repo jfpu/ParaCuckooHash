@@ -174,7 +174,7 @@ void BenchmarkOptCuckooHashMap<T>::run_all() {
 
 	std::cout << "Benchmarking Optimistic Cuckoo HashMap, " << m_num_ops << " Operations..." << std::endl;
 
-	benchmark_random_interleaved_read_write();
+	// benchmark_random_interleaved_read_write();
 	benchmark_read_only();
 	benchmark_write_only();
 	benchmark_read_only_single_bucket();

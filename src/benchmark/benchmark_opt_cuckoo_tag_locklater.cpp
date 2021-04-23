@@ -192,7 +192,7 @@ double BenchmarkOptCuckooTagLockLaterHashMap<T>::m_benchmark_reads_helper(Optimi
 	    }
         end_time = CycleTimer::currentSeconds();
         best_time = std::min(best_time, end_time-start_time);
-        std::cout << "\t" << end_time-start_time << std::endl;
+        // std::cout << "\t" << end_time-start_time << std::endl;
     }
 
 	return best_time;
