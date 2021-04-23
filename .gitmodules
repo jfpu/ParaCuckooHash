@@ -1,0 +1,4 @@
+[submodule "util/sparsehash-c11"]
+	path = util/sparsehash-c11
+	url = https://github.com/sparsehash/sparsehash-c11.git
+	branch = master

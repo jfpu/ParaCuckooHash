@@ -15,6 +15,7 @@
 #include "benchmark_opt_cuckoo_tag.h"
 #include "benchmark_opt_cuckoo_tag_locklater.h"
 #include "benchmark_hash.h"
+#include "benchmark_dense_hashmap.h"
 
 #include "../cuckoo_fine_hash_map.h"
 // #include "../optimistic_cuckoo_tag_locklater_hash_map.h"
@@ -125,4 +126,7 @@ int main() {
 
     BenchmarkHash benchmark_hash(NUM_OPS);
     benchmark_hash.run_all();
+
+    BenchmarkDenseHashMap<std::string> benchmark_dense_hashmap(NUM_OPS);
+    benchmark_dense_hashmap.run_all();
 }
