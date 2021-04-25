@@ -124,9 +124,9 @@ int main() {
     BenchmarkOptCuckooTagLockLaterHashMap<std::string> benchmark_opt_cuckoo_tag_ll(NUM_OPS);
     benchmark_opt_cuckoo_tag_ll.run_all();
 
-    BenchmarkHash benchmark_hash(NUM_OPS);
-    benchmark_hash.run_all();
-
     BenchmarkDenseHashMap<std::string> benchmark_dense_hashmap(NUM_OPS);
     benchmark_dense_hashmap.run_all();
+
+    BenchmarkHash benchmark_hash(NUM_OPS);
+    benchmark_hash.run_all();
 }
