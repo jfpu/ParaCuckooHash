@@ -13,6 +13,8 @@ class BenchmarkHash {
 		void benchmark_boost_hash();
 		void benchmark_hashlittle();
 		void benchmark_hashlittle2();
+		void benchmark_murmurhash2();
+		void benchmark_murmurhash2A();
 		void run_all();
 
 	private:

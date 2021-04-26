@@ -3,6 +3,7 @@
 
 #include "../common/CycleTimer.h"
 #include "../common/hash.h"
+#include "../common/MurmurHash2.h"
 
 #include <boost/functional/hash.hpp>
 
@@ -87,6 +88,34 @@ void BenchmarkHash::benchmark_hashlittle2() {
     std::cout << "\t" << "hashlittle2: " << m_num_ops / best_time / (1000 * 1000) << std::endl;
 }
 
+void BenchmarkHash::benchmark_murmurhash2() {
+    double start_time, end_time, best_time;
+    best_time = 1e30;
+    for (int i = 0; i < 10; i++) {
+        start_time = CycleTimer::currentSeconds();
+        for (int j = 0; j < m_num_ops; j++) {
+            MurmurHash2(m_keys[i].c_str(), m_keys[i].length(), 0);
+        }
+        end_time = CycleTimer::currentSeconds();
+        best_time = std::min(best_time, end_time-start_time);
+    }
+    std::cout << "\t" << "MurmurHash2: " << m_num_ops / best_time / (1000 * 1000) << std::endl;
+}
+
+void BenchmarkHash::benchmark_murmurhash2A() {
+    double start_time, end_time, best_time;
+    best_time = 1e30;
+    for (int i = 0; i < 10; i++) {
+        start_time = CycleTimer::currentSeconds();
+        for (int j = 0; j < m_num_ops; j++) {
+            MurmurHash2A(m_keys[i].c_str(), m_keys[i].length(), 0);
+        }
+        end_time = CycleTimer::currentSeconds();
+        best_time = std::min(best_time, end_time-start_time);
+    }
+    std::cout << "\t" << "MurmurHash2: " << m_num_ops / best_time / (1000 * 1000) << std::endl;
+}
+
 void BenchmarkHash::run_all() {
 
 	std::cout << "Benchmarking Hash Functions, " << m_num_ops << " Operations..." << std::endl;
@@ -95,6 +124,8 @@ void BenchmarkHash::run_all() {
     benchmark_boost_hash();
     benchmark_hashlittle();
     benchmark_hashlittle2();
+    benchmark_murmurhash2();
+    benchmark_murmurhash2A();
 
     std::cout << std::endl;
 }
