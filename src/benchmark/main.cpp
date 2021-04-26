@@ -40,8 +40,8 @@ void benchmark_fine_cuckoo() {
     }
 
     double start_time, end_time, best_put_time, best_get_time;
-    best_put_time = 1e30;
-    best_get_time = 1e30;
+    best_put_time = 0;
+    best_get_time = 0;
     for (int i = 0; i < 3; i++) {
 
         // PUT

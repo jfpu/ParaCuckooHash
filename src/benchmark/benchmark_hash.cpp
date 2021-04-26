@@ -26,7 +26,7 @@ BenchmarkHash::~BenchmarkHash() {
 void BenchmarkHash::benchmark_std_hash() {
 
 	double start_time, end_time, best_time;
-    best_time = 1e30;
+    best_time = 0;
     for (int i = 0; i < 10; i++) {
         start_time = CycleTimer::currentSeconds();
         std::hash<std::string> string_hasher;
@@ -34,15 +34,16 @@ void BenchmarkHash::benchmark_std_hash() {
             string_hasher(m_keys[j]);
         }
         end_time = CycleTimer::currentSeconds();
-        best_time = std::min(best_time, end_time-start_time);
+        best_time = std::max(best_time, end_time-start_time);
     }
-    std::cout << "\t" << "std::hash: " << m_num_ops / best_time / (1000 * 1000) << std::endl;
+    // std::cout << "\t" << "std::hash: " << m_num_ops / best_time / (1000 * 1000) << std::endl;
+    std::cout << "\t" << "std::hash: " << (1000 * 1000) * best_time / m_num_ops << std::endl;
 }
 
 void BenchmarkHash::benchmark_boost_hash() {
 
     double start_time, end_time, best_time;
-    best_time = 1e30;
+    best_time = 0;
     for (int i = 0; i < 10; i++) {
         start_time = CycleTimer::currentSeconds();
         boost::hash<std::string> string_hasher;
@@ -50,15 +51,16 @@ void BenchmarkHash::benchmark_boost_hash() {
             string_hasher(m_keys[j]);
         }
         end_time = CycleTimer::currentSeconds();
-        best_time = std::min(best_time, end_time-start_time);
+        best_time = std::max(best_time, end_time-start_time);
     }
-    std::cout << "\t" << "Boost: " << m_num_ops / best_time / (1000 * 1000) << std::endl;
+    // std::cout << "\t" << "Boost: " << m_num_ops / best_time / (1000 * 1000) << std::endl;
+    std::cout << "\t" << "Boost: " << (1000 * 1000) * best_time / m_num_ops << std::endl;
 }
 
 void BenchmarkHash::benchmark_hashlittle() {
 
     double start_time, end_time, best_time;
-    best_time = 1e30;
+    best_time = 0;
     for (int i = 0; i < 10; i++) {
         start_time = CycleTimer::currentSeconds();
         for (int j = 0; j < m_num_ops; j++) {
@@ -66,15 +68,16 @@ void BenchmarkHash::benchmark_hashlittle() {
             hashlittle(m_keys[i].c_str(), m_keys[i].length(), h1);
         }
         end_time = CycleTimer::currentSeconds();
-        best_time = std::min(best_time, end_time-start_time);
+        best_time = std::max(best_time, end_time-start_time);
     }
-    std::cout << "\t" << "hashlittle: " << m_num_ops / best_time / (1000 * 1000) << std::endl;
+    // std::cout << "\t" << "hashlittle: " << m_num_ops / best_time / (1000 * 1000) << std::endl;
+    std::cout << "\t" << "hashlittle: " << (1000 * 1000) * best_time / m_num_ops << std::endl;
 }
 
 void BenchmarkHash::benchmark_hashlittle2() {
 
     double start_time, end_time, best_time;
-    best_time = 1e30;
+    best_time = 0;
     for (int i = 0; i < 10; i++) {
         start_time = CycleTimer::currentSeconds();
         for (int j = 0; j < m_num_ops; j++) {
@@ -83,37 +86,40 @@ void BenchmarkHash::benchmark_hashlittle2() {
             hashlittle2(m_keys[i].c_str(), m_keys[i].length(), &h1, &h2);
         }
         end_time = CycleTimer::currentSeconds();
-        best_time = std::min(best_time, end_time-start_time);
+        best_time = std::max(best_time, end_time-start_time);
     }
-    std::cout << "\t" << "hashlittle2: " << m_num_ops / best_time / (1000 * 1000) << std::endl;
+    // std::cout << "\t" << "hashlittle2: " << m_num_ops / best_time / (1000 * 1000) << std::endl;
+    std::cout << "\t" << "hashlittle2: " << (1000 * 1000) * best_time / m_num_ops << std::endl;
 }
 
 void BenchmarkHash::benchmark_murmurhash2() {
     double start_time, end_time, best_time;
-    best_time = 1e30;
+    best_time = 0;
     for (int i = 0; i < 10; i++) {
         start_time = CycleTimer::currentSeconds();
         for (int j = 0; j < m_num_ops; j++) {
             MurmurHash2(m_keys[i].c_str(), m_keys[i].length(), 0);
         }
         end_time = CycleTimer::currentSeconds();
-        best_time = std::min(best_time, end_time-start_time);
+        best_time = std::max(best_time, end_time-start_time);
     }
-    std::cout << "\t" << "MurmurHash2: " << m_num_ops / best_time / (1000 * 1000) << std::endl;
+    // std::cout << "\t" << "MurmurHash2: " << m_num_ops / best_time / (1000 * 1000) << std::endl;
+    std::cout << "\t" << "MurmurHash2: " << (1000 * 1000) * best_time / m_num_ops << std::endl;
 }
 
 void BenchmarkHash::benchmark_murmurhash2A() {
     double start_time, end_time, best_time;
-    best_time = 1e30;
+    best_time = 0;
     for (int i = 0; i < 10; i++) {
         start_time = CycleTimer::currentSeconds();
         for (int j = 0; j < m_num_ops; j++) {
             MurmurHash2A(m_keys[i].c_str(), m_keys[i].length(), 0);
         }
         end_time = CycleTimer::currentSeconds();
-        best_time = std::min(best_time, end_time-start_time);
+        best_time = std::max(best_time, end_time-start_time);
     }
-    std::cout << "\t" << "MurmurHash2: " << m_num_ops / best_time / (1000 * 1000) << std::endl;
+    // std::cout << "\t" << "MurmurHash2: " << m_num_ops / best_time / (1000 * 1000) << std::endl;
+    std::cout << "\t" << "MurmurHash2A: " << (1000 * 1000) * best_time / m_num_ops << std::endl;
 }
 
 void BenchmarkHash::run_all() {

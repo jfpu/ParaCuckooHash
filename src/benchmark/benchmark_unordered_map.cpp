@@ -30,23 +30,24 @@ void BenchmarkUnorderedMap<T>::benchmark_read_only() {
     }
 
 	double start_time, end_time, best_time;
-    best_time = 1e30;
+    best_time = 0;
     for (int i = 0; i < 3; i++) {
         start_time = CycleTimer::currentSeconds();
         for (int j = 0; j < m_num_ops; j++) {
             my_map.find(m_random_keys[j]);
         }
         end_time = CycleTimer::currentSeconds();
-        best_time = std::min(best_time, end_time-start_time);
+        best_time = std::max(best_time, end_time-start_time);
     }
-    std::cout << "\t" << "Read-Only: " << m_num_ops / best_time / (1000 * 1000) << std::endl;
+    // std::cout << "\t" << "Read-Only: " << m_num_ops / best_time / (1000 * 1000) << std::endl;
+    std::cout << "\t" << "Read-Only: " << (1000 * 1000) * best_time / m_num_ops << std::endl;
 }
 
 template <typename T>
 void BenchmarkUnorderedMap<T>::benchmark_write_only() {
 
 	double start_time, end_time, best_time;
-    best_time = 1e30;
+    best_time = 0;
     for (int i = 0; i < 3; i++) {
 	    std::unordered_map<std::string, std::string> my_map;
 
@@ -55,10 +56,11 @@ void BenchmarkUnorderedMap<T>::benchmark_write_only() {
             my_map.insert(std::pair<std::string,std::string>(m_random_keys[j], m_random_keys[j]));
         }
         end_time = CycleTimer::currentSeconds();
-        best_time = std::min(best_time, end_time-start_time);
+        best_time = std::max(best_time, end_time-start_time);
     }
 
-    std::cout << "\t" << "Write-Only: " << m_num_ops / best_time / (1000 * 1000) << std::endl;
+    // std::cout << "\t" << "Write-Only: " << m_num_ops / best_time / (1000 * 1000) << std::endl;
+    std::cout << "\t" << "Write-Only: " << (1000 * 1000) * best_time / m_num_ops << std::endl;
 }
 
 template <typename T>

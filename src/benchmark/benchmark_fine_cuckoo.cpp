@@ -39,9 +39,12 @@ void BenchmarkFineCuckoo<T>::benchmark_random_interleaved_read_write() {
 	    for (float read_percentage = 0.0f ; read_percentage <= 1.0f; read_percentage += 0.10f){
           CuckooFineHashMap<T> my_map(num_buckets);
           double best_time = m_benchmark_reads_helper(&my_map, read_percentage);
-          std::cout << "\t Interleaved case: " << 100*space_efficiency << "% Space Efficiency (" << NUM_READERS
+          // std::cout << "\t Interleaved case: " << 100*space_efficiency << "% Space Efficiency (" << NUM_READERS
                     << " Reader Threads), Read Percentage " << read_percentage*100 << "%: "
                     << m_num_ops / best_time / (1000 * 1000) << std::endl;
+          std::cout << "\t Interleaved case: " << 100*space_efficiency << "% Space Efficiency (" << NUM_READERS
+                    << " Reader Threads), Read Percentage " << read_percentage*100 << "%: "
+                    << (1000 * 1000) * best_time / m_num_ops << std::endl
         }
 	}
   */
@@ -62,7 +65,8 @@ void BenchmarkFineCuckoo<T>::benchmark_random_interleaved_read_write() {
 
           std::cout << "\t Interleaved case: " << 100*space_efficiency << "% Space Efficiency (" << NUM_READERS
                     << " Reader Threads), Read Percentage " << read_percentage*100 << "%, Prepopulate percentage: " << prepopulate_percentage * 100 << "% : "
-                    << m_num_ops / best_time / (1000 * 1000) << std::endl;
+                    // << m_num_ops / best_time / (1000 * 1000) << std::endl;
+					<< (1000 * 1000) * best_time / m_num_ops / NUM_READERS << std::endl;
         }
         else{
           // Prepopulate hash map
@@ -75,9 +79,8 @@ void BenchmarkFineCuckoo<T>::benchmark_random_interleaved_read_write() {
 
           std::cout << "\t Interleaved case: " << 100*space_efficiency << "% Space Efficiency (" << NUM_READERS
                     << " Reader Threads), Read Percentage " << read_percentage*100 << "%, Prepopulate percentage: " << prepopulate_percentage * 100 << "% : "
-                    << m_num_ops * (1.0f-prepopulate_percentage) / best_time / (1000 * 1000) << std::endl;
-
-
+                    // << m_num_ops * (1.0f-prepopulate_percentage) / best_time / (1000 * 1000) << std::endl;
+                    << (1000 * 1000) * best_time / (m_num_ops * (1.0f-prepopulate_percentage)) / NUM_READERS << std::endl;
         }
       }
     }
@@ -92,8 +95,8 @@ void BenchmarkFineCuckoo<T>::benchmark_read_only() {
     CuckooFineHashMap<T> my_map(m_num_buckets);
     double best_time = m_benchmark_reads_helper(&my_map);
 
-    std::cout << "\t" << "Read-Only (" << NUM_READERS << " Reader Threads): "
-              << m_num_ops / best_time / (1000 * 1000) << std::endl;
+    // std::cout << "\t" << "Read-Only (" << NUM_READERS << " Reader Threads): " << m_num_ops / best_time / (1000 * 1000) << std::endl;
+    std::cout << "\t" << "Read-Only (" << NUM_READERS << " Reader Threads): " << (1000 * 1000) * best_time / m_num_ops / NUM_READERS << std::endl;
 }
 
 template <typename T>
@@ -102,7 +105,7 @@ void BenchmarkFineCuckoo<T>::benchmark_write_only() {
 	double start_time, end_time, best_time;
 	int num_buckets = (1.0f/0.25f) * m_num_ops / float(m_slots_per_bucket);
 
-    best_time = 1e30;
+    best_time = 0;
     for (int i = 0; i < 10; i++) {
 	    CuckooFineHashMap<T> my_map(num_buckets);
 
@@ -111,9 +114,10 @@ void BenchmarkFineCuckoo<T>::benchmark_write_only() {
             my_map.put(m_random_keys[j], m_random_keys[j]);
         }
         end_time = CycleTimer::currentSeconds();
-        best_time = std::min(best_time, end_time-start_time);
+        best_time = std::max(best_time, end_time-start_time);
     }
-    std::cout << "\t" << "Write-Only: " << m_num_ops / best_time / (1000 * 1000) << std::endl;
+    // std::cout << "\t" << "Write-Only: " << m_num_ops / best_time / (1000 * 1000) << std::endl;
+	std::cout << "\t" << "Write-Only: " << (1000 * 1000) * best_time / m_num_ops << std::endl;
 }
 
 template <typename T>
@@ -148,7 +152,7 @@ void BenchmarkFineCuckoo<T>::benchmark_read_only_single_bucket() {
 	        args[i].keys = identical_keys;
 	    }
 
-	    best_time = 1e30;
+	    best_time = 0;
 	    for (int i = 0; i < 10; i++) {
 	        start_time = CycleTimer::currentSeconds();
 		    for (int j = 0; j < num_readers; j++) {
@@ -159,10 +163,10 @@ void BenchmarkFineCuckoo<T>::benchmark_read_only_single_bucket() {
 		        pthread_join(workers[j], NULL);
 		    }
 	        end_time = CycleTimer::currentSeconds();
-	        best_time = std::min(best_time, end_time-start_time);
+	        best_time = std::max(best_time, (end_time-start_time) / num_readers);
 	    }
-	    std::cout << "\t" << "Read-Only Single Bucket (" << num_readers << " Reader Threads): "
-	              << m_num_ops / best_time / (1000 * 1000) << std::endl;
+	    // std::cout << "\t" << "Read-Only Single Bucket (" << num_readers << " Reader Threads): " << m_num_ops / best_time / (1000 * 1000) << std::endl;
+		std::cout << "\t" << "Read-Only Single Bucket: (" << num_readers << " Reader Threads): " << (1000 * 1000) * best_time / m_num_ops  << std::endl;
 	}
 	delete[] identical_keys;
 }
@@ -176,7 +180,8 @@ void BenchmarkFineCuckoo<T>::benchmark_space_efficiency() {
 		double best_time = m_benchmark_reads_helper(&my_map);
 
 	    std::cout << "\t" << 100*space_efficiency << "% Space Efficiency (" << NUM_READERS << " Reader Threads): "
-	              << m_num_ops / best_time / (1000 * 1000) << std::endl;
+	              // << m_num_ops / best_time / (1000 * 1000) << std::endl;
+				  << (1000 * 1000) * best_time / m_num_ops / NUM_READERS << std::endl;
 	}
 }
 
@@ -205,7 +210,7 @@ double BenchmarkFineCuckoo<T>::m_benchmark_reads_helper(
 
 	double start_time, end_time, best_time;
 
-    best_time = 1e30;
+    best_time = 0;
     for (int i = 0; i < 5; i++) {
         start_time = CycleTimer::currentSeconds();
 	    for (int j = 0; j < NUM_READERS; j++) {
@@ -216,7 +221,7 @@ double BenchmarkFineCuckoo<T>::m_benchmark_reads_helper(
 	        pthread_join(workers[j], NULL);
 	    }
         end_time = CycleTimer::currentSeconds();
-        best_time = std::min(best_time, end_time-start_time);
+        best_time = std::max(best_time, end_time-start_time);
         // std::cout << "\t" << end_time-start_time << std::endl;
     }
 

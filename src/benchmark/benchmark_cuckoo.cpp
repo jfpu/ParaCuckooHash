@@ -34,7 +34,7 @@ void BenchmarkCuckooHashMap<T>::benchmark_read_only() {
     CuckooHashMap<T> my_map(m_num_buckets);
     double best_time = m_benchmark_reads_helper(&my_map);
 
-    std::cout << "\t" << "Read-Only: " << best_time << std::endl;
+    std::cout << "\t" << "Read-Only: " << (1000 * 1000) * best_time / m_num_ops << std::endl;
 }
 
 template <typename T>
@@ -42,7 +42,7 @@ void BenchmarkCuckooHashMap<T>::benchmark_write_only() {
 
 	double start_time, end_time, best_time;
 
-    best_time = 1e30;
+    best_time = 0;
     for (int i = 0; i < 10; i++) {
 	    CuckooHashMap<T> my_map(m_num_buckets);
 
@@ -51,9 +51,10 @@ void BenchmarkCuckooHashMap<T>::benchmark_write_only() {
             my_map.put(m_random_keys[j], m_random_keys[j]);
         }
         end_time = CycleTimer::currentSeconds();
-        best_time = std::min(best_time, end_time-start_time);
+        best_time = std::max(best_time, end_time-start_time);
     }
-    std::cout << "\t" << "Write-Only: " << m_num_ops / best_time / (1000 * 1000) << std::endl;
+    // std::cout << "\t" << "Write-Only: " << m_num_ops / best_time / (1000 * 1000) << std::endl;
+    std::cout << "\t" << "Write-Only: " << (1000 * 1000) * best_time / m_num_ops << std::endl;
 }
 
 template <typename T>
@@ -67,16 +68,17 @@ void BenchmarkCuckooHashMap<T>::benchmark_read_only_single_bucket() {
 	std::string single_key = m_random_keys[0];
 	double start_time, end_time, best_time;
 
-	best_time = 1e30;
+	best_time = 0;
 	for (int i = 0; i < 10; i++) {
         start_time = CycleTimer::currentSeconds();
         for (int j = 0; j < m_num_ops; j++) {
         	my_map.get(single_key);
         }
         end_time = CycleTimer::currentSeconds();
-        best_time = std::min(best_time, end_time-start_time);
+        best_time = std::max(best_time, end_time-start_time);
 	}
-    std::cout << "\t" << "Read-Only Single Bucket: " << m_num_ops / best_time / (1000 * 1000) << std::endl;
+    // std::cout << "\t" << "Read-Only Single Bucket: " << m_num_ops / best_time / (1000 * 1000) << std::endl;
+    std::cout << "\t" << "Read-Only Single Bucket: " << (1000 * 1000) * best_time / m_num_ops  << std::endl;
 }
 
 template <typename T>
@@ -87,8 +89,8 @@ void BenchmarkCuckooHashMap<T>::benchmark_space_efficiency() {
 	    CuckooHashMap<T> my_map(num_buckets);
 		double best_time = m_benchmark_reads_helper(&my_map);
 
-	    std::cout << "\t" << 100*space_efficiency << "% Space Efficiency: "
-	              << m_num_ops / best_time / (1000 * 1000) << std::endl;
+	    // std::cout << "\t" << 100*space_efficiency << "% Space Efficiency: " << m_num_ops / best_time / (1000 * 1000) << std::endl;
+	    std::cout << "\t" << 100*space_efficiency << "% Space Efficiency: " << (1000 * 1000) * best_time / m_num_ops << std::endl;
 	}
 }
 
@@ -102,14 +104,14 @@ double BenchmarkCuckooHashMap<T>::m_benchmark_reads_helper(CuckooHashMap<T>* my_
 
 	double start_time, end_time, best_time;
 
-	best_time = 1e30;
+	best_time = 0;
 	for (int i = 0; i < 10; i++) {
         start_time = CycleTimer::currentSeconds();
         for (int j = 0; j < m_num_ops; j++) {
         	my_map->get(m_random_keys[j]);
         }
         end_time = CycleTimer::currentSeconds();
-        best_time = std::min(best_time, end_time-start_time);
+        best_time = std::max(best_time, end_time-start_time);
 	}
 	return best_time;
 }
