@@ -1,0 +1,619 @@
+***** Starting benchmark with 100 operations *****
+Benchmarking Unordered Map, 100 Operations...
+	Read-Only: 7.0347
+	Write-Only: 2.79868
+
+Benchmarking Fine HashMap, 100 Operations...
+	Read-Only (24 Reader Threads): 0.239885
+TODO: Write Only
+	Read-Only Single Bucket (1 Reader Threads): 3.03214
+	Read-Only Single Bucket (5 Reader Threads): 1.36576
+	Read-Only Single Bucket (9 Reader Threads): 0.565999
+	Read-Only Single Bucket (13 Reader Threads): 0.424568
+	Read-Only Single Bucket (17 Reader Threads): 0.34498
+	Read-Only Single Bucket (21 Reader Threads): 0.280544
+TODO: Interleaved Reads / Writes
+
+Benchmarking Cuckoo HashMap, 100 Operations...
+	Read-Only:5.86888
+	Write-Only: 2.82783
+	Read-Only Single Bucket: 11.62
+	15% Space Efficiency: 9.55967
+	30% Space Efficiency: 8.67881
+	45% Space Efficiency: 8.12272
+	60% Space Efficiency: 7.65318
+	75% Space Efficiency: 7.06874
+	90% Space Efficiency: 6.17963
+
+Benchmarking Fine Grained Cuckoo HashMap, 100 Operations...
+	Read-Only (24 Reader Threads): 0.243877
+	Write-Only: 3.83438
+	Read-Only Single Bucket (1 Reader Threads): 2.53262
+	Read-Only Single Bucket (5 Reader Threads): 1.32577
+	Read-Only Single Bucket (9 Reader Threads): 0.585864
+	Read-Only Single Bucket (13 Reader Threads): 0.442771
+	Read-Only Single Bucket (17 Reader Threads): 0.353151
+	Read-Only Single Bucket (21 Reader Threads): 0.297889
+	15% Space Efficiency (24 Reader Threads): 0.258123
+	30% Space Efficiency (24 Reader Threads): 0.263232
+	45% Space Efficiency (24 Reader Threads): 0.263
+	60% Space Efficiency (24 Reader Threads): 0.255487
+	75% Space Efficiency (24 Reader Threads): 0.262695
+	90% Space Efficiency (24 Reader Threads): 0.263359
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 85% : 0.0398837
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 90% : 0.0266509
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 85% : 0.0388071
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 90% : 0.0264042
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 85% : 0.0394778
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 90% : 0.0260015
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 85% : 0.039449
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 90% : 0.0263134
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 85% : 0.0376095
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 90% : 0.0261071
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 85% : 0.0395653
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 90% : 0.0269852
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 85% : 0.0392681
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 90% : 0.0263987
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 85% : 0.0389496
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 90% : 0.0262001
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 85% : 0.0389415
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 90% : 0.0266494
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 85% : 0.0392629
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 90% : 0.0266893
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 85% : 0.0395339
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 90% : 0.0263057
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 85% : 0.0395939
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 90% : 0.0266134
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 85% : 0.0392847
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 90% : 0.02633
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 85% : 0.0391413
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 90% : 0.0265177
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 85% : 0.0396037
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 90% : 0.0261237
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 85% : 0.0398382
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 90% : 0.0264361
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 85% : 0.0393266
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 90% : 0.0262592
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 85% : 0.0392554
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 90% : 0.0264697
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 85% : 0.0395303
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 90% : 0.0263535
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 85% : 0.0392127
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 90% : 0.0259513
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 85% : 0.0397282
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 90% : 0.0266276
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 85% : 0.0396317
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 90% : 0.0261806
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 85% : 0.0397167
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 90% : 0.0266167
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 85% : 0.040326
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 90% : 0.0270651
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 85% : 0.0402422
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 90% : 0.0269305
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 85% : 0.0399428
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 90% : 0.0262703
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 85% : 0.0397968
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 90% : 0.0269625
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 85% : 0.0402243
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 90% : 0.0267172
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 85% : 0.0391888
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 90% : 0.0268173
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 85% : 0.0391068
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 90% : 0.026024
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 85% : 0.0393524
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 90% : 0.0264607
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 85% : 0.0397783
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 90% : 0.025826
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 85% : 0.0397497
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 90% : 0.0255073
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 85% : 0.0392024
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 90% : 0.0261785
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 85% : 0.039004
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 90% : 0.0256624
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 85% : 0.0388585
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 90% : 0.0263263
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 85% : 0.0398648
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 90% : 0.026706
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 85% : 0.0399678
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 90% : 0.026946
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 85% : 0.0395381
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 90% : 0.0264513
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 85% : 0.0392642
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 90% : 0.0261906
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 85% : 0.0399455
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 90% : 0.0265966
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 85% : 0.0392714
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 90% : 0.0262973
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 85% : 0.0391081
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 90% : 0.0262439
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 85% : 0.0397479
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 90% : 0.0261783
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 85% : 0.0404281
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 90% : 0.0262978
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 85% : 0.039025
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 90% : 0.0266374
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 85% : 0.0395318
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 90% : 0.0258179
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 85% : 0.0396599
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 90% : 0.0265934
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 85% : 0.03903
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 90% : 0.0263132
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 85% : 0.0400869
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 90% : 0.0270279
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 85% : 0.0400824
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 90% : 0.0261844
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 85% : 0.0397778
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 90% : 0.0265843
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 85% : 0.0400766
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 90% : 0.0265794
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 85% : 0.0399277
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 90% : 0.0263366
+
+Benchmarking Optimistic Cuckoo HashMap, 100 Operations...
+	Read-Only (24 Reader Threads): 0.263193
+	Write-Only: 1.06454
+	Read-Only Single Bucket (1 Reader Threads): 2.5194
+	Read-Only Single Bucket (5 Reader Threads): 1.33638
+	Read-Only Single Bucket (9 Reader Threads): 0.623879
+	Read-Only Single Bucket (13 Reader Threads): 0.485645
+	Read-Only Single Bucket (17 Reader Threads): 0.359684
+	Read-Only Single Bucket (21 Reader Threads): 0.295959
+	15% Space Efficiency (24 Reader Threads): 0.266477
+	30% Space Efficiency (24 Reader Threads): 0.26485
+	45% Space Efficiency (24 Reader Threads): 0.26602
+	60% Space Efficiency (24 Reader Threads): 0.274932
+	75% Space Efficiency (24 Reader Threads): 0.262811
+	90% Space Efficiency (24 Reader Threads): 0.261865
+TODO: Interleaved Reads / Writes
+
+Benchmarking Optimistic Cuckoo Tag HashMap, 100 Operations...
+	Read-Only (24 Reader Threads): 0.252997
+	Write-Only: 1.64257
+	Read-Only Single Bucket (1 Reader Threads): 2.85096
+	Read-Only Single Bucket (5 Reader Threads): 1.35131
+	Read-Only Single Bucket (9 Reader Threads): 0.589337
+	Read-Only Single Bucket (13 Reader Threads): 0.447146
+	Read-Only Single Bucket (17 Reader Threads): 0.362611
+	Read-Only Single Bucket (21 Reader Threads): 0.296971
+	15% Space Efficiency (24 Reader Threads): 0.260349
+	30% Space Efficiency (24 Reader Threads): 0.267099
+	45% Space Efficiency (24 Reader Threads): 0.262842
+	60% Space Efficiency (24 Reader Threads): 0.263164
+	75% Space Efficiency (24 Reader Threads): 0.259419
+	90% Space Efficiency (24 Reader Threads): 0.265749
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 80%: 0.26772
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 82.5%: 0.267299
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 85%: 0.265077
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 87.5%: 0.261133
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 90%: 0.260049
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 92.5%: 0.261297
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 95%: 0.26565
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 97.5%: 0.256864
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 100%: 0.25953
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 80%: 0.276105
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 82.5%: 0.272145
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 85%: 0.274033
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 87.5%: 0.270489
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 90%: 0.266795
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 92.5%: 0.267676
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 95%: 0.264465
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 97.5%: 0.277277
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 100%: 0.267572
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 80%: 0.271488
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 82.5%: 0.267115
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 85%: 0.264315
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 87.5%: 0.245634
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 90%: 0.262215
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 92.5%: 0.26334
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 95%: 0.264614
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 97.5%: 0.263508
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 100%: 0.262001
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 80%: 0.26708
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 82.5%: 0.266143
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 85%: 0.265547
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 87.5%: 0.262915
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 90%: 0.259561
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 92.5%: 0.266713
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 95%: 0.261928
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 97.5%: 0.261856
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 100%: 0.257926
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 80%: 0.25692
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 82.5%: 0.254486
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 85%: 0.256419
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 87.5%: 0.255165
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 90%: 0.252684
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 92.5%: 0.251939
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 95%: 0.248612
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 97.5%: 0.254324
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 100%: 0.249826
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 80%: 0.263537
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 82.5%: 0.266051
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 85%: 0.262782
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 87.5%: 0.262952
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 90%: 0.26739
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 92.5%: 0.268396
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 95%: 0.262819
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 97.5%: 0.267265
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 100%: 0.266799
+
+Benchmarking Optimistic Cuckoo Tag Lock LaterHashMap, 100 Operations...
+	Read-Only (24 Reader Threads): 0.272155
+	Write-Only: 1.39685
+	Read-Only Single Bucket (1 Reader Threads): 2.92541
+	Read-Only Single Bucket (5 Reader Threads): 1.52105
+	Read-Only Single Bucket (9 Reader Threads): 0.634331
+	Read-Only Single Bucket (13 Reader Threads): 0.471274
+	Read-Only Single Bucket (17 Reader Threads): 0.365308
+	Read-Only Single Bucket (21 Reader Threads): 0.300208
+	15% Space Efficiency (24 Reader Threads): 0.27293
+	30% Space Efficiency (24 Reader Threads): 0.26695
+	45% Space Efficiency (24 Reader Threads): 0.263477
+	60% Space Efficiency (24 Reader Threads): 0.263158
+	75% Space Efficiency (24 Reader Threads): 0.275183
+	90% Space Efficiency (24 Reader Threads): 0.262181
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 85% : 0.0396842
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 90% : 0.0264346
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 85% : 0.0393005
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 90% : 0.0263631
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 85% : 0.0398735
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 90% : 0.0247836
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 85% : 0.0379962
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 90% : 0.0253496
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 85% : 0.0331468
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 90% : 0.0249499
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 85% : 0.0365673
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 90% : 0.024654
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 85% : 0.0373447
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 90% : 0.0252865
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 85% : 0.0383504
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 90% : 0.0248033
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 85% : 0.0380429
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 90% : 0.0250968
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 85% : 0.0380204
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 90% : 0.0243511
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 85% : 0.038388
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 90% : 0.0255901
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 85% : 0.0379234
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 90% : 0.0257109
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 85% : 0.0380945
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 90% : 0.0250055
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 85% : 0.0380335
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 90% : 0.0250383
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 85% : 0.0399775
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 90% : 0.0258557
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 85% : 0.0394733
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 90% : 0.0266706
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 85% : 0.0397837
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 90% : 0.0268885
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 85% : 0.0403472
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 90% : 0.0269937
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 85% : 0.040432
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 90% : 0.0265495
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 85% : 0.041632
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 90% : 0.0268564
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 85% : 0.0398607
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 90% : 0.0269529
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 85% : 0.0402641
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 90% : 0.0267488
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 85% : 0.0401142
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 90% : 0.0265924
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 85% : 0.0396602
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 90% : 0.0266609
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 85% : 0.0394148
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 90% : 0.0262553
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 85% : 0.0401087
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 90% : 0.0268691
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 85% : 0.0407709
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 90% : 0.0269386
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 85% : 0.0399374
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 90% : 0.0267841
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 85% : 0.0399622
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 90% : 0.0268521
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 85% : 0.0402351
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 90% : 0.0264375
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 85% : 0.040144
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 90% : 0.0263559
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 85% : 0.0391331
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 90% : 0.0258609
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 85% : 0.0399394
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 90% : 0.025949
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 85% : 0.0400417
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 90% : 0.0257795
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 85% : 0.0301743
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 90% : 0.0197476
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 85% : 0.0310017
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 90% : 0.0259561
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 85% : 0.0387934
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 90% : 0.0269264
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 85% : 0.0399534
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 90% : 0.0266405
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 85% : 0.04063
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 90% : 0.0225993
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 85% : 0.0329687
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 90% : 0.0266259
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 85% : 0.0402538
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 90% : 0.0264353
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 85% : 0.0402733
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 90% : 0.0267874
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 85% : 0.0398061
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 90% : 0.0267003
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 85% : 0.0402457
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 90% : 0.0268486
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 85% : 0.0406131
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 90% : 0.0266728
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 85% : 0.0402476
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 90% : 0.0268251
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 85% : 0.0404487
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 90% : 0.0268122
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 85% : 0.0405215
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 90% : 0.0266749
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 85% : 0.0401347
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 90% : 0.0263811
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 85% : 0.0387285
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 90% : 0.0261006
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 85% : 0.0398478
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 90% : 0.0267139
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 85% : 0.0331579
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 90% : 0.0270973
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 85% : 0.0405465
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 90% : 0.0268211
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 85% : 0.0400907
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 90% : 0.0270637
+
+Benchmarking DenseHashMap, 100 Operations...
+	Read-Only (24 Reader Threads): 0.261076
+	Write-Only: 4.39338
+	Read-Only Single Bucket (1 Reader Threads): 2.6484
+	Read-Only Single Bucket (5 Reader Threads): 1.31071
+	Read-Only Single Bucket (9 Reader Threads): 0.555494
+	Read-Only Single Bucket (13 Reader Threads): 0.488251
+	Read-Only Single Bucket (17 Reader Threads): 0.362505
+	Read-Only Single Bucket (21 Reader Threads): 0.302976
+	15% Space Efficiency (24 Reader Threads): 0.266925
+	30% Space Efficiency (24 Reader Threads): 0.264393
+	45% Space Efficiency (24 Reader Threads): 0.268042
+	60% Space Efficiency (24 Reader Threads): 0.265702
+	75% Space Efficiency (24 Reader Threads): 0.261429
+	90% Space Efficiency (24 Reader Threads): 0.268045
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 85% : 0.0403842
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 90% : 0.026885
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 85% : 0.0412821
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 90% : 0.0217302
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 85% : 0.0325055
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 90% : 0.0220544
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 85% : 0.0333612
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 90% : 0.0267044
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 85% : 0.0398697
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 90% : 0.0267743
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 85% : 0.0401453
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 90% : 0.0267133
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 85% : 0.0399481
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 90% : 0.0267871
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 85% : 0.0398884
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 90% : 0.0261973
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 85% : 0.040002
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 90% : 0.0267691
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 85% : 0.0393529
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 90% : 0.0267577
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 85% : 0.0400901
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 90% : 0.026454
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 85% : 0.0399683
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 90% : 0.0269288
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 85% : 0.0399152
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 90% : 0.0264088
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 85% : 0.0339843
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 90% : 0.0224658
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 85% : 0.0335209
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 90% : 0.0219679
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 85% : 0.039792
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 90% : 0.0266143
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 85% : 0.0400833
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 90% : 0.0265463
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 85% : 0.0388933
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 90% : 0.0269446
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 85% : 0.0392691
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 90% : 0.0266661
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 85% : 0.0405563
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 90% : 0.0266535
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 85% : 0.039739
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 90% : 0.0267003
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 85% : 0.0401637
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 90% : 0.0267015
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 85% : 0.0317863
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 90% : 0.0266252
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 85% : 0.0400586
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 90% : 0.0263252
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 85% : 0.0394045
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 90% : 0.0263145
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 85% : 0.0404358
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 90% : 0.0264069
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 85% : 0.0405558
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 90% : 0.0269996
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 85% : 0.0397917
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 90% : 0.0271017
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 85% : 0.040605
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 90% : 0.0268684
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 85% : 0.0403716
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 90% : 0.026881
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 85% : 0.0404899
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 90% : 0.0272457
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 85% : 0.0404164
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 90% : 0.0269685
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 85% : 0.0405857
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 90% : 0.0268619
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 85% : 0.0400132
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 90% : 0.0271214
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 85% : 0.0404239
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 90% : 0.0267313
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 85% : 0.0403871
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 90% : 0.0269343
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 85% : 0.0404213
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 90% : 0.0272851
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 85% : 0.0401719
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 90% : 0.0269188
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 85% : 0.0410182
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 90% : 0.0269525
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 85% : 0.0399553
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 90% : 0.0268928
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 85% : 0.0402304
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 90% : 0.0265786
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 85% : 0.0405856
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 90% : 0.0268418
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 85% : 0.0404633
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 90% : 0.0268993
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 85% : 0.0401977
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 90% : 0.0270448
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 85% : 0.0407808
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 90% : 0.0269149
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 85% : 0.0400427
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 90% : 0.0265581
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 85% : 0.0398102
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 90% : 0.0266953
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 85% : 0.040357
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 90% : 0.0264078
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 85% : 0.040627
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 90% : 0.0270336
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 85% : 0.0406905
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 90% : 0.0269486
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 85% : 0.040177
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 90% : 0.0264087
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 85% : 0.0395035
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 90% : 0.0264196
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 85% : 0.0401523
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 90% : 0.0265658
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 85% : 0.0365899
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 90% : 0.0268797
+
+Benchmarking Libcuckoo, 100 Operations...
+	Read-Only (24 Reader Threads): 0.230766
+	Write-Only: 1.10491
+	Read-Only Single Bucket: (1 Reader Threads): 1.20702
+	Read-Only Single Bucket: (5 Reader Threads): 4.76526
+	Read-Only Single Bucket: (9 Reader Threads): 5.02127
+	Read-Only Single Bucket: (13 Reader Threads): 5.38795
+	Read-Only Single Bucket: (17 Reader Threads): 5.32387
+	Read-Only Single Bucket: (21 Reader Threads): 5.78666
+	15% Space Efficiency: (24 Reader Threads): 0.251429
+	30% Space Efficiency: (24 Reader Threads): 0.229927
+	45% Space Efficiency: (24 Reader Threads): 0.240712
+	60% Space Efficiency: (24 Reader Threads): 0.260741
+	75% Space Efficiency: (24 Reader Threads): 0.253082
+	90% Space Efficiency: (24 Reader Threads): 0.253086
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 85% : 0.0392208
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 90% : 0.0263711
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 85% : 0.0401
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 90% : 0.0262971
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 85% : 0.0396357
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 90% : 0.0259494
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 85% : 0.0397107
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 90% : 0.0264354
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 85% : 0.0396147
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 90% : 0.0265945
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 85% : 0.0390956
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 90% : 0.0268294
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 85% : 0.0398257
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 90% : 0.0262613
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 85% : 0.0402687
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 90% : 0.0266645
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 85% : 0.0403131
+	 Interleaved case: 15% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 90% : 0.0265442
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 85% : 0.0389552
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 90% : 0.0258951
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 85% : 0.0380378
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 90% : 0.0267833
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 85% : 0.0402951
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 90% : 0.0268513
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 85% : 0.0403907
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 90% : 0.0271257
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 85% : 0.0404957
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 90% : 0.0264781
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 85% : 0.039586
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 90% : 0.0264025
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 85% : 0.0396259
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 90% : 0.0212349
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 85% : 0.0397075
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 90% : 0.0261489
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 85% : 0.0403123
+	 Interleaved case: 30% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 90% : 0.0266936
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 85% : 0.0397945
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 90% : 0.026345
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 85% : 0.0397009
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 90% : 0.0265208
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 85% : 0.0395972
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 90% : 0.0264167
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 85% : 0.0386006
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 90% : 0.0258752
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 85% : 0.033381
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 90% : 0.0221352
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 85% : 0.0395387
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 90% : 0.0263801
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 85% : 0.0399692
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 90% : 0.0267195
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 85% : 0.0400367
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 90% : 0.0265953
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 85% : 0.0324795
+	 Interleaved case: 45% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 90% : 0.021918
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 85% : 0.0400986
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 90% : 0.0265451
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 85% : 0.0396072
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 90% : 0.0265931
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 85% : 0.0400676
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 90% : 0.0265951
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 85% : 0.0398708
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 90% : 0.0266329
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 85% : 0.0392779
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 90% : 0.0262479
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 85% : 0.0396817
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 90% : 0.0262092
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 85% : 0.0329199
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 90% : 0.0221188
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 85% : 0.0404041
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 90% : 0.0264582
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 85% : 0.0397035
+	 Interleaved case: 60% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 90% : 0.0264662
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 85% : 0.039523
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 90% : 0.0262905
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 85% : 0.0324247
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 90% : 0.0269468
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 85% : 0.0402054
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 90% : 0.0266256
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 85% : 0.0398428
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 90% : 0.0261288
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 85% : 0.0395213
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 90% : 0.026288
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 85% : 0.0393583
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 90% : 0.0267466
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 85% : 0.0394381
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 90% : 0.0268883
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 85% : 0.0390999
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 90% : 0.026389
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 85% : 0.0335214
+	 Interleaved case: 75% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 90% : 0.0218979
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 85% : 0.0392262
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 80%, Prepopulate percentage: 90% : 0.0264667
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 85% : 0.0406006
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 82.5%, Prepopulate percentage: 90% : 0.0265566
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 85% : 0.0396894
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 85%, Prepopulate percentage: 90% : 0.0263253
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 85% : 0.0333562
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 87.5%, Prepopulate percentage: 90% : 0.0260813
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 85% : 0.0400359
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 90%, Prepopulate percentage: 90% : 0.0267332
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 85% : 0.0396731
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 92.5%, Prepopulate percentage: 90% : 0.0265329
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 85% : 0.039808
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 95%, Prepopulate percentage: 90% : 0.0266406
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 85% : 0.0394699
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 97.5%, Prepopulate percentage: 90% : 0.0264687
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 85% : 0.0403338
+	 Interleaved case: 90% Space Efficiency (24 Reader Threads), Read Percentage 100%, Prepopulate percentage: 90% : 0.0270141
+
+Benchmarking Hash Functions, 100 Operations...
+	std::hash: 78.2326
+	Boost: 18.9707
+	hashlittle: 43.1308
+	hashlittle2: 39.5777
+	MurmurHash2: 85.489
+	MurmurHash2A: 53.2874
+	MurmurHash3: 38.4854
+

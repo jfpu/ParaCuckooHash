@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>ParaCuckooHash: Concurrent, In-Memory HashMap</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/half-slider.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">ParaCuckooHash</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="proposal.html">Project Proposal</a>
+                    </li>
+                    <li>
+                        <a href="checkpoint.html">Checkpoint</a>
+                    </li>
+                    <li>
+                        <a href="index.html">Final Writeup</a>
+                    </li>
+                    <li>
+                        <a href="http://www.github.com/BensonQiu/15418FinalProject " target="_blank">Source Code</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <br><br><br><br>
+
+    <!-- Page Content -->
+    <div class="container" id="proposal">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1><center>Final Writeup</center></h1>
+                <h4><center>Team Members: Benson Qiu and Tommy Hung</center><h4>
+            </div>
+        </div>
+
+        <hr>
+
+    <!-- Page Content -->
+    <div class="container" id="checkpoint">
+
+        <div class="row">
+            <div class="col-lg-10">
+                <h2>Summary</h2>
+
+                <p>We implemented a parallel hashmap using concurrent cuckoo hashing optimizations for read-heavy workloads using algorithmic improvements described in MemC3 by Fan et al.<sup>1</sup> and in another paper by Li et al.<sup>2</sup> Based on our benchmarks, our fastest implementation was able to achieve a <b>12x speedup for concurrent reads</b> over a single threaded <code>C++11 std::unordered_map</code> while maintaining <b>90% space efficiency</b> using two Intel Xeon E5-2620 v3 processors.</p>
+
+                <hr>
+
+                <h2>Motivation</h2>
+                <p><b>Read Heavy Workload: </b>MemC3 by Fan et al. makes improvements on Memcached, an in-memory key-value store commonly used as a caching layer for API calls and database requests. The workload of Memcached is primarily read heavy, with real-world read to write ratios of 30:1.</p>
+
+                <p><b>Space Efficiency: </b>Some open address hashing schemes such as linear probing degrade in performance as hashmaps become denser. This number of keys searched increases linearly with space efficiency for successful searches (key exists) and superlinearly with for unsuccessful searches. At 90% space efficiency, an unsuccessful search using basic linear probing would search 55 keys on average.</p>
+
+                <figure><center>
+                    <img src="img/linear_probing.png" alt="Linear Probing" style="width:55%;height:55%;">
+                    <figcaption><b>Figure 1.</b> Expected number of keys searched for varying space efficiencies.</figcaption>
+                </figure></center>
+
+                <hr>
+
+                <h2>Background</h2>
+
+                <figure><center>
+                    <img src="img/cuckoo.png" alt="Cuckoo" style="width:35%;height:35%;">
+                    <figcaption><b>Figure 2.</b> Cuckoo Hashing.</figcaption>
+                </figure></center>
+                <br>
+                <p>Cuckoo hashing is a scheme for resolving hash collisions in a hashmap. The idea is to use two hash functions instead of one, so that there are two buckets for the key to reside in. If all slots in both buckets are full, the key is inserted at a random slot within the two buckets, and the existing key at the randomly chosen slot is evicted and reinserted at another bucket. <b>Lookups are guaranteed to be constant time</b> because we need to search at most <code>2*NUM_SLOTS_PER_BUCKET</code> slots for a key.</p>
+
+                <hr>
+
+                <h2>Algorithm / Approach</h2>
+
+                <figure><center>
+                    <img src="img/optimistic_concurrent.png" alt="Optimistic Concurrent" style="width:45%;height:45%;">
+                    <figcaption><b>Figure 3.</b> Concurrent Cuckoo Hashing With Optimizations.</figcaption>
+                </figure></center>
+                <br>
+
+<pre><code>// Data structures used for optimistic concurrent cuckoo hashing
+
+HashPointer *m_table;
+
+struct HashPointer {
+    unsigned char tag;
+    HashEntry* ptr;
+};
+
+struct HashEntry {
+    std::string key;
+    T val;
+};
+</code></pre>
+                <br>
+                <p>For our project, we implemented several improvements to basic cuckoo hashing scheme, with an emphasis on maximizing concurrent read performance for read-heavy workloads. Each bucket in the hashmap has four slots, where each slot contains a HashPointer struct. The HashPointer struct contains a tag and a pointer to a HashEntry struct that actually contains the key-value pair. (<i>Note: The algorithm described below focuses on a multiple reader, single writer workload. We did further optimizations to handle a multiple writer case.</i>)</p>
+
+                <br>
+
+                <p><b>Lock Striping: </b>We maintain a key-version counter for each bucket. Whenever an insertion thread is about to displace a key, it atomically increments the relevant counter using <code>__sync_fetch_and_add</code>. The insertion thread increments the counter again after it is done modifying the key, thus incrementing a counter by 2 for each displacement. A lookup thread snapshots its corresponding key-version counter twice, once at the beginning of the process and again when it is done reading both buckets. If at either point the key-version counter is odd, the lookup thread knows that the key is being modified so it has to wait and retry. <b>Lock striping allows for concurrent, lock-free reads.</b></p>
+
+                <br>
+
+                <p><b>Tag-Based Lookup/Insertion: </b>When a key is inserted into the hashmap, the key is hashed to a 1 byte tag value that is stored in the HashPointer struct. When performing a key lookup, we apply a tag hash to the key and only dereference the HashPointer's <code>HashEntry* ptr</code> field if the tags match (i.e. <code>tag_hash(current_key) == hash_pointer.tag</code>). The key ideas behind using tags is to <b>reduce pointer dereferences</b> and to <b>maximize cache locality</b>. We only make a pointer dereference if we find matching tags, which will occur 1/256 times with a 8 bit tag. The HashPointer struct requires only 16 bytes of memory, so we can store all 4 slots of a bucket on a 64-byte cache line, thus maximizing cache locality.</p>
+
+                <br>
+
+                <figure><center>
+                    <img src="img/cache_locality.png" style="width:55%;height:55%;">
+                    <figcaption><b>Figure 4. </b>Cache miss rate measured on an Intel Xeon E5-2680 processor using perf, with 24 threads reading 10M elements. Exact results vary across machines, but there are generally fewer L3 cache misses with the tag optimization than without.</figcaption>
+                </figure></center>
+
+                <br>
+                <p><b>Separate Path Discovery and Path Eviction: </b>A typical cuckoo hashing insertion scheme may involve a series of insertions, evictions, and re-insertions. We search for the entire eviction path first before applying a sequence of key displacements. Because the path search step does not displace any keys, other threads can read without retry conflicts during this step. In the path eviction step, we move keys backwards along the cuckoo path so that each displacement only affects one key at a time. Separating the search and eviction steps reduces the "floating time" of keys, <b>minimizing the number of retries for concurrent readers</b>. To evaluate the impact of floating time on performance, we measured the average path discovery and average path eviction times on 1M insertions, which were 0.35 and 0.19 seconds, respectively. This optimization reduced the floating time from 0.35+0.19 seconds to 0.19 seconds, a 65% decrease.</p>
+
+                <br>
+
+                <p><b>Space Efficiency: </b>Using 4 slots per bucket with tag-based lookups and insertions allows us to achieve <b>90% space efficiency without significant degradation in performance</b>. Other open addressing schemes such as linear probing and basic cuckoo hashing tend to degrade in performance after about 50% space efficiency.</p>
+
+                <br>
+
+                <p>After implementing the optimizations above for a multiple reader, single writer workload, we wanted to create a general purpose concurrent hashmap that performed well for multiple writers.</p>
+
+                <br>
+
+                <p><b>Lock Later: </b>After separating path discovery and path eviction for insertions, concurrent writers can search for paths in parallel because path search does not make modifications to the data structure. This reduces the critical region to just the path eviction step, although insertion threads must verify during the eviction step that their paths are still valid.</p>
+
+                <hr>
+
+                <h2>Results</h2>
+
+                <p>We measured the results of our hashmap implementations by benchmarking raw read/write throughput per second. We used 10M strings, converted from randomly generated integers, as key and value inputs. All tests were performed on two Intel Xeon E5-2620 v3 processors.</p>
+
+                <br>
+
+                <figure><center>
+                    <img src="img/01_read_throughput.png" style="width:55%;height:55%;">
+                    <figcaption><b>Figure 5. </b>Randomized read throughput with 24 threads for parallel implementations. <br>90% space efficiency was used for all cuckoo hashing schemes.</figcaption>
+                </figure></center>
+
+                <br>
+
+                <p>Our first optimistic cuckoo implementation (with lock striping) achieved 19M reads per second with 24 threads, which is slightly faster than both fine grained (locking over each bucket) separate chaining and fine grained cuckoo hashing. We achieved a significant increase in performance when we implemented the tag optimization. Recall that a HashPointer struct in a parallel cuckoo hashmap with tags requires 16 bytes, so a 4-way set associative bucket can fit entirely into a 64-byte cache line. Also, a 1 byte tag can take on 256 different values, so we only need to make a pointer dereference 1/256 times. We are able to achieve 38.2M reads per second, a <b>12x speedup for concurrent reads using optimistic cuckoo hashing with tags</b> over a single threaded <code>C++11 std::unordered_map</code> on the Latedays Xeon Phi. The lock later optimization did not yield any noticeable speedup for reads, which is expected because lock later was an extra optimization to allow for concurrent writes.</p>
+
+                <hr>
+
+                <figure><center>
+                    <img src="img/02_space_efficiency.png" style="width:55%;height:55%;">
+                    <figcaption><b>Figure 6. </b>Randomized read throughput with 24 threads for parallel implementations. <br>90% space efficiency was used for all cuckoo hashing schemes.</figcaption>
+                </figure></center>
+
+                <br>
+
+                <p>As we make the hashmaps denser by increasing space efficiency, the sequential cuckoo, fine grained cuckoo, and optimistic cuckoo implementations decreased in performance. This is because read operations for denser hashmaps, on average, search through more slots before the correct key-value pair is found. Recall that a reader thread will need to search up to <code>2*NUM_SLOTS_PER_BUCKET</code> slots, but will generally search fewer slots in sparser hashmaps. <b>Optimistic cuckoo hashing with the tag optimization did not have any significant performance degradation</b> even as the space efficiency of the hashmap increased to 90%. This was likely due to the effects of our tag optimization, where we maximized cache locality and minimized the number of pointer deferences. Optimistic cuckoo hashing with both the tag and lock later optimizations (not included in Figure 4) had nearly identical results.</p>
+
+                <hr>
+
+                <figure><center>
+                    <img src="img/03_single_bucket_lookups.png" style="width:55%;height:55%;">
+                    <figcaption><b>Figure 7. </b>Read throughput with a single random key that hashes to the same bucket. </figcaption>
+                </center></figure>
+
+                <br>
+
+                <p>We measured read throughput under high contention by performing concurrent read operations on the same key, which always hashes to the same bucket. Performance for all hashmap implementations decreased in the multithreaded case compared to the single threaded case. Even under high contention, the optimistic cuckoo implementations were relatively faster than both fine grained cuckoo hashing and fine grained separate chaining.</p>
+
+                <hr>
+
+                <figure><center>
+                    <img src="img/04_hash_throughput.png" style="width:55%;height:55%;">
+                    <figcaption><b>Figure 8. </b>Speed of various hash functions on strings.</figcaption>
+                </figure></center>
+
+                <br>
+
+                <p>We tested different hash functions because the overhead of hashing keys was a significant performance bottleneck. We found that <code>hashlittle2</code>, a 64-byte hash that effectively generates two 32-byte hash values, provided the highest throughput. The throughput for <code>hashlittle2</code> in the graph was multiplied by 2 to account for <code>hashlittle2</code> generating two 32-bit hash values in a single function call.</p>
+
+                <hr>
+
+                <figure><center>
+                    <img src="img/05_insertion_throughput.png" style="width:55%;height:55%;">
+                    <figcaption><b>Figure 9. </b>Performance of interleaved read/write requests on hashmaps pre-populated to 80% space efficiency.</figcaption>
+                </figure></center>
+
+                <br>
+
+                <p>We measured interleaved read and write throughput on dense hashmaps. All hashmaps were pre-populated by performing write operations until 80% of the slots in the hashmap were occupied. Then we measured performance on the pre-populated hashmaps with interleaved read and write requests, ranging from 90% reads (and 10% writes) to 100% reads. The key observation of our results is that the lock later optimization (blue line in Figure 7) is faster than optimistic cuckoo hashing without the lock later optimization (green and yellow lines) because <b>the lock later optimization speeds up write throughput.</b></p>
+
+                <hr>
+
+                <h3>Comparison to Fan et al.</h3>
+
+                <figure><center>
+                    <img src="img/fan_comparison.png" style="width:55%;height:55%;">
+                    <figcaption><b>Figure 10. </b>Comparison of our read performance to Fan et al.</figcaption>
+                </figure></center>
+
+                <br>
+
+                <p>Our code achieves almost the same performance as our reference paper under similar settings. Fan's implementation ran on the Intel Xeon L5640. Our implementation ran on the Intel Xeon E5-2680 (we did not use Latedays for this test).</b></p>
+
+                <hr>
+
+                <h3>Extensions / Future Work</h3>
+                <p>We were able to implement everything mentioned in the project proposal, which was based on work by Fan et al. We also implemented the lock later optimization to increase write throughput. With our remaining time, we explored the feasibility of several other optimizations described by Li et al. for increasing write throughput.</p>
+
+                <br>
+
+                <p><b>BFS Path Search: </b>Our current path discovery scheme behaves like DFS. Using BFS over DFS for path discovery will find us the shortest path, which reduces the critical region for the path eviction step. We measured the average eviction path size from DFS, ignoring situations where no evictions were needed because a slot was found immediately, and found that <b>the average eviction path length using DFS is 4.7</b> when inserting elements in an optimistic cuckoo hashmap with 90% space efficiency. BFS reduces the average eviction path length to a logarithmic factor. However, we noticed that a BFS-based path search would have significantly more overhead during the path search phase.</p>
+
+                <br>
+
+                <p><b>Fine Grained Locks for Writes: </b>Our current implementation (Optimistic Cuckoo + Tag + Lock Later) reduces the critical section of writes by separating path discovery and path eviction, but we still have a region with a coarse grained lock. An optimization would be to use fine grained locks over each bucket. We did a proof of concept for this optimization by implementing a fine grained version of basic cuckoo hashing and noticed a significant improvement in concurrent write throughput. We feel that this would be an effective optimization to implement if we had more time.</p>
+
+                <hr>
+
+                <h3>Acknowledgements</h3>
+                <p>Many of the optimizations implemented for this project were borrowed from Fan et al.<sup>1</sup> and Li et al.<sup>2</sup></p>
+                <p>Our hash function was written by Bob Jenkins and is publicly available <a href="http://burtleburtle.net/bob/c/lookup3.c" target="_blank">here</a>.</p>
+
+                <hr>
+
+                <h3>References</h3>
+                <sup>1</sup><a href="http://www.cs.cmu.edu/~dga/papers/memc3-nsdi2013.pdf">http://www.cs.cmu.edu/~dga/papers/memc3-nsdi2013.pdf</a><br>
+                <sup>2</sup><a href="http://www.cs.princeton.edu/~xl/Publications_files/cuckoo-eurosys14.pdf">http://www.cs.princeton.edu/~xl/Publications_files/cuckoo-eurosys14.pdf</a><br>
+                <hr>
+
+                <h3>Work Done By Each Student</h3>
+                Equal work was performed by both project members.
+
+            </div>
+        </div>
+
+        <hr>
+
+    </div>
+
+    <!-- /.container -->
+
+
+    <!-- jQuery -->
+    <script src"js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+    </script>
+
+</body>
+
+</html>
